@@ -1,10 +1,11 @@
-FROM zabbix/zabbix-server-pgsql:ubuntu-7.0.2
+FROM zabbix/zabbix-server-pgsql:ubuntu-7.0.3
 
 USER root
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get update && \
-  apt-get -y install iputils-ping fping dnsutils telnet netcat && \
+  apt-get -y install iputils-ping fping dnsutils telnet && \
+#  apt-get -y install netcat && \
   cd /usr/sbin; ln -s /usr/bin/fping && \
   chown root:zabbix /usr/bin/fping && \
   chmod u+s /usr/bin/fping && \
